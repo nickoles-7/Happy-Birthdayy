@@ -178,13 +178,13 @@
 
         runAsync().start();
         var together = new Date();
-        together.setFullYear(2008, 1, 24); 
+        together.setFullYear(2008, 1, 24); // Feb 24, 2008
         together.setHours(0);
         together.setMinutes(0);
         together.setSeconds(0);
         together.setMilliseconds(0);
 
-        setInterval(function () {
+        function updateClock() {
             var current = new Date();
             var seconds = (Date.parse(current) - Date.parse(together)) / 1000;
             var days = Math.floor(seconds / (3600 * 24));
@@ -194,8 +194,16 @@
             var realSeconds = Math.floor(seconds % 60);
 
             var result = days + " days " + hours + " hours " + minutes + " minutes " + realSeconds + " seconds";
-            $("#clock").text(result);
-        }, 1000);
+            
+            // This ensures the code finds your "clock" span
+            var clockElement = document.getElementById("clock");
+            if (clockElement) {
+                clockElement.innerHTML = result;
+            }
+        }
+
+        updateClock(); // Run immediately
+        setInterval(updateClock, 1000); // Update every second
     })();
     </script>
 </body>
