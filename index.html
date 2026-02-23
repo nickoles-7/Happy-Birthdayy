@@ -176,15 +176,17 @@
             textAnimate().start();
         }));
 
-        runAsync().start();
+      runAsync().start();
+
+        // --- NEW TIMER START ---
         var together = new Date();
-        together.setFullYear(2008, 1, 24); // Feb 24, 2008
+        together.setFullYear(2008, 1, 24); 
         together.setHours(0);
         together.setMinutes(0);
         together.setSeconds(0);
         together.setMilliseconds(0);
 
-        function updateClock() {
+        function updateTimer() {
             var current = new Date();
             var seconds = (Date.parse(current) - Date.parse(together)) / 1000;
             var days = Math.floor(seconds / (3600 * 24));
@@ -195,16 +197,15 @@
 
             var result = days + " days " + hours + " hours " + minutes + " minutes " + realSeconds + " seconds";
             
-            // This ensures the code finds your "clock" span
-            var clockElement = document.getElementById("clock");
-            if (clockElement) {
-                clockElement.innerHTML = result;
-            }
+            // This forces the text to update inside the 'clock' span
+            $("#clock").html(result);
         }
 
-        updateClock(); // Run immediately
-        setInterval(updateClock, 1000); // Update every second
+        // Start the clock
+        updateTimer();
+        setInterval(updateTimer, 1000);
+        // --- NEW TIMER END ---
     })();
-    </script>
+</script>
 </body>
 </html>
