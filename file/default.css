@@ -7,81 +7,66 @@ body {
   font-size: 14px;
   font-family: sans-serif;
   color: white;
-  overflow: auto;
+  overflow-x: hidden; /* Prevents side-scrolling on mobile */
 }
-a {
-  color: white;
-  font-size: 14px;
-}
+
 #main {
   width: 100%;
 }
+
 #wrap {
   position: relative;
   margin: 0 auto;
-  width: 100px;
-  height: 680px;
-  margin-top: 10px;
+  width: 100%;       /* Fixed: Changed from 100px to 100% */
+  max-width: 1100px; /* Keeps it from getting too wide on desktop */
+  height: auto;
+  min-height: 680px;
 }
+
+#canvas {
+  display: block;
+  margin: 0 auto;
+  width: 100%;       /* Fixed: Changed from 100px to 100% */
+  max-width: 1100px;
+  height: auto;
+}
+
 #text {
-  width: 272px;
-  height: 560px;
-  left: 188px;
-  top: 80px;
+  width: 90%;        /* Make text box flexible */
+  left: 5%;          /* Center it on mobile */
+  top: 40px;
   position: absolute;
+  z-index: 10;
 }
+
 #code {
   display: none;
   color: rgb(196, 255, 255);
-  font-size: 16px;
-  margin-top: 70px;
   line-height: 25px;
-  font-size: larger;
+  font-size: 1.2rem; /* Responsive font size */
   font-weight: bolder;
 }
+
 #clock-box {
-  position: absolute;
-  left: 60px;
-  top: 550px;
-  font-size: 28px;
-  display: block;
-  color: red;
-}
-#clock-box a {
-  font-size: 28px;
-  text-decoration: none;
-}
-#clock {
-  margin-left: 48px;
-}
-#clock .digit {
-  font-size: 64px;
-}
-#canvas {
-  margin: 0 auto;
-  width: 100px;
-  height: 680px;
-}
-#error {
-  margin: 0 auto;
+  position: relative; /* Change to relative so it flows below the tree */
   text-align: center;
-  margin-top: 60px;
-  display: none;
-}
-.hand {
-  cursor: pointer;
-}
-.say {
-  margin-left: 5px;
-}
-.space {
-  margin-right: 150px;
+  margin-top: 20px;
+  width: 100%;
+  left: 0;
+  top: 0;
+  font-size: 1.1rem;
+  display: block;
+  color: white;       /* Changed from red to white for better visibility */
 }
 
-#message-box{
-  position: absolute;
-  margin-top:450px;
-  font-size: 25px;
+#clock {
+  margin: 0 auto;
+}
+
+#message-box {
+  position: relative;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 20px;
   font-family: monospace;
-
 }
